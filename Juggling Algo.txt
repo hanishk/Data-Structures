@@ -1,0 +1,53 @@
+package javaapplication11;
+ /* 
+  @Hanish
+  */
+public class RotatedArray3 {
+    // juggling algorithm
+    
+    // greatest common divisor
+    private static int gcd(int a,int b){
+        if(b==0)
+            return a;
+        else
+            return gcd(b,a%b);
+    }
+    
+    private static void  ArrayRotate(int arr[], int size,int position){
+        int d =-1,i,temp,j;
+        
+        for(i=0;i<gcd(size,position);i++){   //outer loop
+            j=i;
+            temp = arr[i];
+            
+            while(true){
+              d = (j+position)%size;
+                if(d==i)
+                    break;  // reached end sets
+                
+                arr[j]= arr[d];  // shift element to right
+                j=d;
+            }
+            arr[j] = temp;
+        }
+        
+    }
+    
+    private static void printArray(int arr[],int size){
+        for(int i =0;i<size;i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+    
+    public static void main(String[] args){
+        int arr[] = {1,2,3,4,5,6,7,8,9};
+        int position = 2;
+        int size = 9;
+        
+        ArrayRotate(arr,size,position);
+        printArray(arr,size);
+        
+        
+       
+    }
+}
