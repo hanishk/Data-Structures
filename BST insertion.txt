@@ -1,0 +1,67 @@
+import java.util.*;
+import java.io.*;
+
+class Node {
+    Node left;
+    Node right;
+    int data;
+    
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+
+class Solution {
+   
+  	public static void preOrder( Node root ) {
+      
+    	if( root == null)
+        	return;
+      
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+     
+    }
+
+ /* Node is defined as :
+ class Node 
+    int data;
+    Node left;
+    Node right;
+    
+    */
+
+	public static Node insert(Node root,int data) {
+        
+        if(root == null) return new Node(data);
+
+        Node current_node = root;
+
+        while(true){
+            if(current_node.data <= data){
+                if(current_node.right != null){
+                current_node = current_node.right;
+            }else{
+                current_node.right =new Node(data);
+                break;
+            }
+        }
+            else{
+            if(current_node.left != null){
+                current_node = current_node.left;
+            }else{
+                current_node.left = new Node(data);
+                break;
+            }
+            
+        }
+        
+    	
+    }
+    return root;
+    }
+
+	public static void main(String[] args) {
